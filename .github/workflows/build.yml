@@ -1,0 +1,23 @@
+name: Run Cake build
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: windows-latest
+    name: Run Cake build
+
+    env:
+      DOTNET_NOLOGO: 1
+      DOTNET_CLI_TELEMETRY_OPTOUT: 1
+
+    steps:
+      - name: Run powershell script
+        shell: powershell
+        run: |
+          ./build.ps1
